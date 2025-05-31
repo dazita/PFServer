@@ -1,0 +1,80 @@
+[
+    {
+      "name": "Toyota",
+      "lines": [
+        {
+          "name": "Corolla",
+          "models": [2015, 2016, 2017, 2018]
+        },
+        {
+          "name": "Hilux",
+          "models": [2012, 2014, 2019]
+        }
+      ]
+    },
+    {
+      "name": "Ford",
+      "lines": [
+        {
+          "name": "Focus",
+          "models": [2016, 2017, 2018]
+        },
+        {
+          "name": "Ranger",
+          "models": [2015, 2018, 2020]
+        }
+      ]
+    },
+    {
+      "name": "Chevrolet",
+      "lines": [
+        {
+          "name": "Aveo",
+          "models": [2011, 2013, 2015]
+        },
+        {
+          "name": "Tracker",
+          "models": [2018, 2019, 2021]
+        }
+      ]
+    },
+    {
+      "name": "Honda",
+      "lines": [
+        {
+          "name": "Civic",
+          "models": [2014, 2015, 2016]
+        },
+        {
+          "name": "CR-V",
+          "models": [2017, 2018, 2020]
+        }
+      ]
+    },
+    {
+      "name": "Nissan",
+      "lines": [
+        {
+          "name": "Versa",
+          "models": [2013, 2014, 2016]
+        },
+        {
+          "name": "Sentra",
+          "models": [2017, 2019, 2020]
+        }
+      ]
+    },
+    {
+      "name": "Hyundai",
+      "lines": [
+        {
+          "name": "Elantra",
+          "models": [2015, 2016, 2017]
+        },
+        {
+          "name": "Tucson",
+          "models": [2018, 2019, 2021]
+        }
+      ]
+    }
+  ]
