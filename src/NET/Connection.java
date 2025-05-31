@@ -33,9 +33,7 @@ public class Connection {
     public void sendBigData(String message) {
         try {
             byte[] messageBytes = message.getBytes(StandardCharsets.UTF_8);
-            // Enviar primero el tamaño del mensaje (4 bytes: int)
             salida.writeInt(messageBytes.length);
-            // Enviar el mensaje completo
             salida.write(messageBytes);
             salida.flush();
         } catch (IOException e) {

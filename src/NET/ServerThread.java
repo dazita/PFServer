@@ -92,14 +92,42 @@ public class ServerThread extends Thread {
                 sendFilteredByPrice(message[1]);
                 break;
 
+            case "GET_LISTING_FULL_INFO":
+                sendListingFullInfo(message[1]);
+                break;
+
             case "EXIT":
                 running = false;
                 connection.close();
                 break;
+                
 
             default:
                 break;
         }
+    }
+
+    private void sendListingFullInfo(String JsonId){
+        JsonObject obj = JsonParser.parseString(JsonId).getAsJsonObject();
+        int id = Integer.valueOf(obj.get("id").getAsString());
+        Listing listing = store.getListings().encontrar(new Listing(null, 0, null, null, null, id, 0));
+        String phoneNumber = store.userPhoneByListingId(id);
+        connection.send(buildFullInfoJson(listing, phoneNumber));
+    }
+
+    private String buildFullInfoJson(Listing listing, String phoneNumber){
+        JsonObject obj = new JsonObject();
+        obj.addProperty("reference", listing.getVehicle().getBrand().getName() + " " + listing.getVehicle().getLine().getName());
+        obj.addProperty("vehicleType", listing.getVehicle().getVehicleType());
+        obj.addProperty("model", String.valueOf(listing.getVehicle().getModel()));
+        obj.addProperty("mileage", listing.getKms());
+        obj.addProperty("price", Double.valueOf(listing.getPrice()));
+        obj.addProperty("carImage", listing.getBase64Image());
+        obj.addProperty("description", listing.getDescription());
+        obj.addProperty("location", listing.getLocation());
+        obj.addProperty("id", listing.getId());
+        obj.addProperty("ownerPhoneNumber", Integer.valueOf(phoneNumber));
+        return obj.toString();
     }
 
     private void sendFilteredByModel(String filterJson){

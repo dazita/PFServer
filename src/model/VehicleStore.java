@@ -18,8 +18,8 @@ public class VehicleStore {
         this.listings = new ArbolAvl<>(new ListingComparatorId());
     }
 
-    public ArrayList<Listing> getListings() {
-        return listings.showInOrder();
+    public ArbolAvl<Listing> getListings() {
+        return listings;
     }
 
     public boolean createUser(User user) {
@@ -91,7 +91,6 @@ public class VehicleStore {
     }
 
     public SimpleList<Listing> filterByModelRange(int firstYear, int lastYear){
-        System.out.println(firstYear + " " + lastYear);
         List<Listing> listingsArray = listings.showInOrder();
         SimpleList<Listing> filteredListings = new SimpleList<>();
         for (Listing listing : listingsArray) {
@@ -118,7 +117,6 @@ public class VehicleStore {
                 filteredListings.add(listing);
             }
         }
-        System.out.println(filteredListings.size());
         return filteredListings;
     }
 
@@ -129,5 +127,16 @@ public class VehicleStore {
             foundListings.add(listings.encontrar(new Listing(null, 0, null, null, null, i, 0)));
         }
         return foundListings;
+    }
+
+    public String userPhoneByListingId(int id){
+        for (User u : users.inOrder()) {
+            for (Integer i : u.getListingIds().inOrder()) {
+                if (i.equals(id)) {
+                    return u.getPhoneNumber();
+                }
+            }
+        }
+        return null;
     }
 }
